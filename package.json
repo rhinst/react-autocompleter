@@ -1,0 +1,44 @@
+{
+  "name": "react-autocompleter",
+  "author": "Invertase",
+  "version": "0.1.0",
+  "description": "A simple, configurable, styleable ReactJS component which completes your phrase with keyboard navigation support.",
+  "main": "./dist/index.js",
+  "keywords": [
+    "react",
+    "ui",
+    "user",
+    "typeahead",
+    "autocomplete"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/invertase/react-autocompleter"
+  },
+  "peerDependencies": {
+    "react": "~0.14"
+  },
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "babel-core": "^5.8.25",
+    "babel-eslint": "^4.1.3",
+    "babel-loader": "^5.3.2",
+    "eslint": "^1.8.0",
+    "eslint-config-airbnb": "^0.1.0",
+    "eslint-plugin-react": "^3.6.3",
+    "html-webpack-plugin": "^1.6.2",
+    "react-dom": "^0.14.2",
+    "react-hot-loader": "^1.3.0",
+    "webpack": "^1.12.3",
+    "webpack-dev-server": "^1.12.1"
+  },
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint ./src",
+    "prebuild": "rm -rf dist",
+    "build": "npm run lint && babel --stage 0 ./src --out-dir ./dist",
+    "prepublish": "npm run build",
+    "example": "NODE_ENV=production webpack -p --config webpack.example.config.js",
+    "playground": "webpack-dev-server --config ./playground/webpack.config.js --colors --inline --port 3000"
+  }
+}
