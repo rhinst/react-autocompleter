@@ -10,8 +10,7 @@ class ListContainer extends Component {
 		itemClassName: PropTypes.string,
 		styles: PropTypes.object,
 		itemStyles: PropTypes.object,
-		navigate: PropTypes.number.isRequired,
-		onChange: PropTypes.func
+		navigate: PropTypes.number.isRequired
 	};
 
 	static defaultProps = {
@@ -33,7 +32,7 @@ class ListContainer extends Component {
 	}
 
 	render() {
-		const { onSelect, data, className, itemClassName, styles, itemStyles, navigate, onChange } = this.props;
+		const { onSelect, data, className, itemClassName, styles, itemStyles, navigate } = this.props;
 		const { activeStyle } = this.state;
 
 		if (itemStyles['.active']) {
@@ -45,7 +44,6 @@ class ListContainer extends Component {
 				{
 					data.map((item, index) => {
 						if (navigate === index) {
-							onChange(item);
 							return (
 								<ListItem onSelect={ onSelect } content={ item } key={ item } className={ itemClassName } styles={ activeStyle } active={ navigate === index }/>
 							);

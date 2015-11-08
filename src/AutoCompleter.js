@@ -50,7 +50,6 @@ class AutoCompleter extends Component {
 			navigate: 0
 		});
 
-		this.onChange(value);
 		if (this.props.onSelect) {
 			this.props.onSelect(value);
 		}
@@ -79,10 +78,6 @@ class AutoCompleter extends Component {
 	}
 
 	handleInputChange = (e) => {
-		if (this.props.onChange) {
-			this.props.onChange(e.target.value);
-		}
-
 		let updatedList = [];
 
 		this.setState({
@@ -107,18 +102,18 @@ class AutoCompleter extends Component {
 
 	handleKeyEvent = (e) => {
 		const { filteredItemList, inputValue } = this.state;
-		const { onSelect } = this.props;
+		const { onSelect, onChange } = this.props;
 		let { navigate } = this.state;
 
 		// down = 40, up = 38, enter = 13
-		if (filteredItemList.length && (e.keyCode === 40 || e.keyCode === 38 || e.keyCode === 13)) {
+		if (filteredItemList.length && (e.keyCode === 40 || e.keyCode === 38)) {
 			if (e.keyCode === 40) {
 				navigate++;
 				if (navigate <= filteredItemList.length) {
 					this.setState({
 						navigate,
 						inputValue: filteredItemList[navigate - 1]
-					});
+					}, onChange(filteredItemList[navigate - 1]));
 				}
 			}
 			if (e.keyCode === 38) {
@@ -127,22 +122,25 @@ class AutoCompleter extends Component {
 						navigate: 0,
 						inputValue: '',
 						filteredItemList: []
-					});
+					}, onChange(filteredItemList[navigate - 1]));
 				}
 				if (navigate > 1) {
 					navigate--;
 					this.setState({
 						navigate,
 						inputValue: filteredItemList[navigate - 1]
-					});
+					}, onChange(filteredItemList[navigate - 1]));
 				}
 			}
-			if (e.keyCode === 13 && inputValue !== '' && onSelect) {
-				onSelect(inputValue);
-				this.setState({
-					filteredItemList: []
-				});
-			}
+		}
+		if (e.keyCode === 13 && inputValue !== '' && onSelect) {
+			onSelect(inputValue);
+			onChange(inputValue);
+			this.setState({
+				navigate: 0,
+				inputValue: '',
+				filteredItemList: []
+			});
 		}
 	}
 
@@ -153,7 +151,7 @@ class AutoCompleter extends Component {
 		return (
 			<div className={ classes.root } style={ styles.root } ref='autocompleter-root' onKeyDown={ keyboard && this.handleKeyEvent }>
 				<Input value={ inputValue } placeholder={ placeholder } className={ classes.input } styles={ styles.input } props={ inputProps } onChange={ this.handleInputChange } onBlur={ this.onBlur } onFocus={ this.onFocus } />
-				<ListContainer data={ filteredItemList } onSelect={ this.onSelect } className={ classes.listContainer } itemClassName={ classes.listItems } styles={ styles.listContainer } itemStyles={ styles.listItems } navigate={ navigate - 1 } onChange={ this.onChange } />
+				<ListContainer data={ filteredItemList } onSelect={ this.onSelect } className={ classes.listContainer } itemClassName={ classes.listItems } styles={ styles.listContainer } itemStyles={ styles.listItems } navigate={ navigate - 1 } />
 			</div>
 		);
 	}

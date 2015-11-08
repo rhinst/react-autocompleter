@@ -40,6 +40,17 @@ const styles = {
 };
 
 class Example extends Component {
+
+	state = {
+		value: ''
+	};
+
+	updateValue = (value) => {
+		this.setState({
+			value
+		});
+	}
+
 	render() {
 		return (
 			<div>
@@ -51,7 +62,7 @@ class Example extends Component {
 					onSelect={ (item) => { console.log('Selected', item); } }
 					onFocus={ () => { console.log('Focused'); } }
 					onBlur={ () => { console.log('Blurred'); } }
-					onChange={ (value) => { console.log('Input changed to ', value); } }
+					onChange={ this.updateValue }
 					limit={ 10 }
 					classes={ {
                     	root: 'autocomplete',
@@ -65,7 +76,6 @@ class Example extends Component {
 					inputProps={ {
 						name: 'search'
 					} }
-					value='ja'
 				/>
 			</div>
 		);
