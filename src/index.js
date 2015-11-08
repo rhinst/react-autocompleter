@@ -1,1 +1,1 @@
-export { default as AutoCompleter } from './AutoCompleter';
+export default './AutoCompleter';
