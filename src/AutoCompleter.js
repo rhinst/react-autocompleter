@@ -135,9 +135,8 @@ class AutoCompleter extends Component {
 	render() {
 		const { filteredItemList, inputValue, navigate } = this.state;
 		const { placeholder, classes, styles, inputProps, keyboard } = this.props;
-
 		return (
-			<div className={ classes.root } styles={ styles.root } ref='autocompleter-root' onKeyDown={ keyboard && this.handleKeyEvent }>
+			<div className={ classes.root } style={ styles.root } ref='autocompleter-root' onKeyDown={ keyboard && this.handleKeyEvent }>
 				<Input value={ inputValue } placeholder={ placeholder } className={ classes.input } styles={ styles.input } props={ inputProps } onChange={ this.handleInputChange } onBlur={ this.onBlur } onFocus={ this.onFocus } />
 				<ListContainer data={ filteredItemList } onSelect={ this.onSelect } className={ classes.listContainer } itemClassName={ classes.listItems } styles={ styles.listContainer } itemStyles={ styles.listItems } navigate={ navigate - 1 } />
 			</div>

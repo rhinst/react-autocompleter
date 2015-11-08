@@ -16,6 +16,9 @@ document.body.innerHTML = `
 `;
 
 const styles = {
+	root: {
+		padding: '5px'
+	},
 	input: {
 		padding: '20px',
 		width: '350px',
