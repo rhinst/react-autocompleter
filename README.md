@@ -107,6 +107,14 @@ Set to `0` for no limit.
 limit={ 10 }
 ```
 
+#### value (string)
+
+The initial/default value on the input.
+
+```
+value='keyword'
+```
+
 #### keyboard (bool|default:true)
 
 If set to false, keyboard navigation will be disabled.
@@ -137,6 +145,14 @@ Triggered on input box blur.
 
 ```
 onBlur={ () => { console.log('input blurred') } }
+```
+
+#### onChange (function)
+
+Triggered on input change, including the navigated and selected value.
+
+```
+onChange={ (value) => { console.log('input changed to', value) } }
 ```
 
 #### inputProps (object)

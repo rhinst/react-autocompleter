@@ -1,7 +1,7 @@
 {
   "name": "react-autocompleter",
   "author": "Invertase",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A simple, configurable, styleable ReactJS component which completes your phrase with keyboard navigation support.",
   "main": "./dist/AutoCompleter.js",
   "keywords": [

@@ -51,6 +51,7 @@ class Example extends Component {
 					onSelect={ (item) => { console.log('Selected', item); } }
 					onFocus={ () => { console.log('Focused'); } }
 					onBlur={ () => { console.log('Blurred'); } }
+					onChange={ (value) => { console.log('Input changed to ', value); } }
 					limit={ 10 }
 					classes={ {
                     	root: 'autocomplete',
@@ -64,6 +65,7 @@ class Example extends Component {
 					inputProps={ {
 						name: 'search'
 					} }
+					value='ja'
 				/>
 			</div>
 		);

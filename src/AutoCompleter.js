@@ -10,13 +10,15 @@ class AutoCompleter extends Component {
 		onSelect: PropTypes.func,
 		onBlur: PropTypes.func,
 		onFocus: PropTypes.func,
+		onChange: PropTypes.func,
 		data: PropTypes.array.isRequired,
 		placeholder: PropTypes.string,
 		limit: PropTypes.number,
 		classes: PropTypes.object,
 		styles: PropTypes.object,
 		inputProps: PropTypes.object,
-		keyboard: PropTypes.bool
+		keyboard: PropTypes.bool,
+		value: PropTypes.string
 	};
 
 	static defaultProps = {
@@ -30,13 +32,14 @@ class AutoCompleter extends Component {
 			listItems: {}
 		},
 		inputProps: {},
-		keyboard: true
+		keyboard: true,
+		value: ''
 	};
 
 	state = {
 		itemList: this.props.data,
 		filteredItemList: [],
-		inputValue: '',
+		inputValue: this.props.value,
 		navigate: 0
 	};
 
@@ -47,6 +50,7 @@ class AutoCompleter extends Component {
 			navigate: 0
 		});
 
+		this.onChange(value);
 		if (this.props.onSelect) {
 			this.props.onSelect(value);
 		}
@@ -68,7 +72,17 @@ class AutoCompleter extends Component {
 		}
 	}
 
+	onChange = (value) => {
+		if (this.props.onChange) {
+			this.props.onChange(value);
+		}
+	}
+
 	handleInputChange = (e) => {
+		if (this.props.onChange) {
+			this.props.onChange(e.target.value);
+		}
+
 		let updatedList = [];
 
 		this.setState({
@@ -135,10 +149,11 @@ class AutoCompleter extends Component {
 	render() {
 		const { filteredItemList, inputValue, navigate } = this.state;
 		const { placeholder, classes, styles, inputProps, keyboard } = this.props;
+
 		return (
 			<div className={ classes.root } style={ styles.root } ref='autocompleter-root' onKeyDown={ keyboard && this.handleKeyEvent }>
 				<Input value={ inputValue } placeholder={ placeholder } className={ classes.input } styles={ styles.input } props={ inputProps } onChange={ this.handleInputChange } onBlur={ this.onBlur } onFocus={ this.onFocus } />
-				<ListContainer data={ filteredItemList } onSelect={ this.onSelect } className={ classes.listContainer } itemClassName={ classes.listItems } styles={ styles.listContainer } itemStyles={ styles.listItems } navigate={ navigate - 1 } />
+				<ListContainer data={ filteredItemList } onSelect={ this.onSelect } className={ classes.listContainer } itemClassName={ classes.listItems } styles={ styles.listContainer } itemStyles={ styles.listItems } navigate={ navigate - 1 } onChange={ this.onChange } />
 			</div>
 		);
 	}
