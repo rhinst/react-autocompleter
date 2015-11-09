@@ -149,7 +149,7 @@ onBlur={ () => { console.log('input blurred') } }
 
 #### onChange (function)
 
-Triggered on input change, including the navigated and selected value.
+Triggered on input change, including the navigated value.
 
 ```
 onChange={ (value) => { console.log('input changed to', value) } }
@@ -167,6 +167,16 @@ inputProps={ {
 ```
 
 ## Misc
+
+### Handling `onChange` & `onSelect`
+
+Since clicking a filtered item does not trigger `onChange`, the item is passed as the callback on the `onSelect` function. There might be a case where your `onSelect` function needs to handle both the state value and the callback value:
+
+```
+selected = (value) => {
+    const input = !value ? this.state.url : value;
+}
+```
 
 ### Browser Autofill
 

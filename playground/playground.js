@@ -9,6 +9,7 @@ document.body.style.background = '#eeeeee';
 document.body.style.display = 'flex';
 document.body.style.flexDirection = 'column';
 document.body.style.alignItems = 'center';
+document.body.style.fontFamily = '"Helvetica Neue", Helvetica, Arial, sans-serif';
 
 document.body.innerHTML = `
 	<div id="root"></div>
