@@ -166,6 +166,18 @@ inputProps={ {
 } }
 ```
 
+## Misc
+
+### Browser Autofill
+
+Browsers like Chrome sometimes autofill input elements if you've added the name attribute something common, like "name" or "url", which overrides this components functionality (annoyingly!). To disabled this, add the following:
+
+```
+inputProps={ {
+    autoComplete='off'
+} }
+```
+
 ## Development
 
 Whilst developing, this repository makes use of webpack & webpack hot reloading.

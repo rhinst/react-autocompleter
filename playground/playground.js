@@ -46,6 +46,7 @@ class Example extends Component {
 	};
 
 	updateValue = (value) => {
+		console.log('Value updated', value);
 		this.setState({
 			value
 		});
@@ -74,7 +75,8 @@ class Example extends Component {
 						...styles
                 	} }
 					inputProps={ {
-						name: 'search'
+						name: 'url',
+						autoComplete: 'off'
 					} }
 				/>
 			</div>

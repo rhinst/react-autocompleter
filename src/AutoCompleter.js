@@ -78,6 +78,7 @@ class AutoCompleter extends Component {
 	}
 
 	handleInputChange = (e) => {
+		this.onChange(e.target.value);
 		let updatedList = [];
 
 		this.setState({
@@ -138,7 +139,7 @@ class AutoCompleter extends Component {
 			onChange(inputValue);
 			this.setState({
 				navigate: 0,
-				inputValue: '',
+				inputValue: inputValue,
 				filteredItemList: []
 			});
 		}
