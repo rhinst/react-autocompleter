@@ -136,7 +136,6 @@ class AutoCompleter extends Component {
 		}
 		if (e.keyCode === 13 && inputValue !== '' && onSelect) {
 			onSelect(inputValue);
-			onChange(inputValue);
 			this.setState({
 				navigate: 0,
 				inputValue: inputValue,
