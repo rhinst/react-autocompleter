@@ -9,6 +9,7 @@ document.body.style.background = '#eeeeee';
 document.body.style.display = 'flex';
 document.body.style.flexDirection = 'column';
 document.body.style.alignItems = 'center';
+document.body.style.fontFamily = '"Helvetica Neue", Helvetica, Arial, sans-serif';
 
 document.body.innerHTML = `
 	<div id="root"></div>
@@ -16,6 +17,9 @@ document.body.innerHTML = `
 `;
 
 const styles = {
+	root: {
+		padding: '5px'
+	},
 	input: {
 		padding: '20px',
 		width: '350px',
@@ -37,6 +41,18 @@ const styles = {
 };
 
 class Example extends Component {
+
+	state = {
+		value: ''
+	};
+
+	updateValue = (value) => {
+		console.log('Value updated', value);
+		this.setState({
+			value
+		});
+	}
+
 	render() {
 		return (
 			<div>
@@ -48,6 +64,7 @@ class Example extends Component {
 					onSelect={ (item) => { console.log('Selected', item); } }
 					onFocus={ () => { console.log('Focused'); } }
 					onBlur={ () => { console.log('Blurred'); } }
+					onChange={ this.updateValue }
 					limit={ 10 }
 					classes={ {
                     	root: 'autocomplete',
@@ -59,7 +76,8 @@ class Example extends Component {
 						...styles
                 	} }
 					inputProps={ {
-						name: 'search'
+						name: 'url',
+						autoComplete: 'off'
 					} }
 				/>
 			</div>

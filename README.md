@@ -107,6 +107,14 @@ Set to `0` for no limit.
 limit={ 10 }
 ```
 
+#### value (string)
+
+The initial/default value on the input.
+
+```
+value='keyword'
+```
+
 #### keyboard (bool|default:true)
 
 If set to false, keyboard navigation will be disabled.
@@ -139,6 +147,14 @@ Triggered on input box blur.
 onBlur={ () => { console.log('input blurred') } }
 ```
 
+#### onChange (function)
+
+Triggered on input change, including the navigated value.
+
+```
+onChange={ (value) => { console.log('input changed to', value) } }
+```
+
 #### inputProps (object)
 
 An object of properties which will be passed to the input element as attributes:
@@ -147,6 +163,28 @@ An object of properties which will be passed to the input element as attributes:
 inputProps={ {
     type: 'password',
     name: 'bon'
+} }
+```
+
+## Misc
+
+### Handling `onChange` & `onSelect`
+
+Since clicking a filtered item does not trigger `onChange`, the item is passed as the callback on the `onSelect` function. There might be a case where your `onSelect` function needs to handle both the state value and the callback value:
+
+```
+selected = (value) => {
+    const input = !value ? this.state.url : value;
+}
+```
+
+### Browser Autofill
+
+Browsers like Chrome sometimes autofill input elements if you've added the name attribute something common, like "name" or "url", which overrides this components functionality (annoyingly!). To disabled this, add the following:
+
+```
+inputProps={ {
+    autoComplete='off'
 } }
 ```
 

@@ -13,12 +13,18 @@ class ListContainer extends Component {
 		navigate: PropTypes.number.isRequired
 	};
 
+	static defaultProps = {
+		itemStyles: {}
+	};
+
 	constructor(props) {
 		super();
 		const styles = JSON.parse(JSON.stringify(props.itemStyles));
 
-		Object.assign(styles, styles['.active'] || {});
-		delete styles['.active'];
+		if (styles['.active']) {
+			Object.assign(styles, styles['.active'] || {});
+			delete styles['.active'];
+		}
 
 		this.state = {
 			activeStyle: styles
@@ -28,7 +34,10 @@ class ListContainer extends Component {
 	render() {
 		const { onSelect, data, className, itemClassName, styles, itemStyles, navigate } = this.props;
 		const { activeStyle } = this.state;
-		delete itemStyles['.active'];
+
+		if (itemStyles['.active']) {
+			delete itemStyles['.active'];
+		}
 
 		const container = (
 			<ul className={ className } style={ styles } ref='autocompleter-listContainer'>
