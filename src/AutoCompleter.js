@@ -43,6 +43,16 @@ class AutoCompleter extends Component {
 		navigate: 0
 	};
 
+	componentWillReceiveProps(nextProps) {
+		// update itemList if itemList prop changed, and clear the input field
+		if (nextProps.data !== this.props.data) {
+			this.setState({ 
+				itemList: nextProps.data,
+				inputValue: ''
+			});
+		}
+  }
+
 	onSelect = (value) => {
 		this.setState({
 			filteredItemList: [],

@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import ListItem from './ListItem';
+import * as _ from 'lodash';
 
 class ListContainer extends Component {
 
@@ -19,7 +20,7 @@ class ListContainer extends Component {
 
 	constructor(props) {
 		super();
-		const styles = JSON.parse(JSON.stringify(props.itemStyles));
+		const styles = _.cloneDeep(props.itemStyles);
 
 		if (styles['.active']) {
 			Object.assign(styles, styles['.active'] || {});
@@ -32,9 +33,11 @@ class ListContainer extends Component {
 	}
 
 	render() {
-		const { onSelect, data, className, itemClassName, styles, itemStyles, navigate } = this.props;
+		const { onSelect, data, className, itemClassName, styles, navigate } = this.props;
 		const { activeStyle } = this.state;
-
+		
+		// lodash cloneDeep prevents data mutation
+		const itemStyles = _.cloneDeep(this.props.itemStyles);
 		if (itemStyles['.active']) {
 			delete itemStyles['.active'];
 		}
@@ -43,14 +46,8 @@ class ListContainer extends Component {
 			<ul className={ className } style={ styles } ref='autocompleter-listContainer'>
 				{
 					data.map((item, index) => {
-						if (navigate === index) {
-							return (
-								<ListItem onSelect={ onSelect } content={ item } key={ item } className={ itemClassName } styles={ activeStyle } active={ navigate === index }/>
-							);
-						}
-
 						return (
-							<ListItem onSelect={ onSelect } content={ item } key={ item } className={ itemClassName } styles={ itemStyles } active={ navigate === index }/>
+							<ListItem onSelect={ onSelect } content={ item } key={ item } className={ itemClassName } styles={ (navigate === index ? activeStyle : itemStyles) } active={ navigate === index }/>
 						);
 					})
 				}
