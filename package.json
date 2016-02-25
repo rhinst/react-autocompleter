@@ -40,5 +40,8 @@
     "prepublish": "npm run build",
     "example": "NODE_ENV=production webpack -p --config webpack.example.config.js",
     "playground": "webpack-dev-server --config ./playground/webpack.config.js --colors --inline --port 3000"
+  },
+  "dependencies": {
+    "lodash": "^4.5.1"
   }
 }
