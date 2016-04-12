@@ -4,7 +4,7 @@ A React component which filters on phrases and returns similar results, with a s
 
 > npm install react-autocompleter --save
 
-[http://invertase.github.io/react-autocompleter/example](http://invertase.github.io/react-autocompleter/example)
+[http://teamfa.github.io/react-autocompleter/example](http://teamfa.github.io/react-autocompleter/example)
 
 ## Basic Usage
 
