@@ -1,6 +1,6 @@
 {
   "name": "react-autocompleter",
-  "author": "Invertase",
+  "author": "TeamFA",
   "version": "1.0.10",
   "description": "A simple, configurable, styleable ReactJS component which completes your phrase with keyboard navigation support.",
   "main": "./dist/AutoCompleter.js",
@@ -14,7 +14,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/invertase/react-autocompleter"
+    "url": "https://github.com/teamfa/react-autocompleter"
   },
   "peerDependencies": {
     "react": "~0.14"
