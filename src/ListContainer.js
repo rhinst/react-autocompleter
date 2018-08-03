@@ -1,6 +1,7 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import ListItem from './ListItem';
 import * as _ from 'lodash';
+import PropTypes from 'prop-types';
 
 class ListContainer extends Component {
 

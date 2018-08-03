@@ -51,7 +51,7 @@ class Example extends Component {
 		this.setState({
 			value
 		});
-	}
+	};
 
 	render() {
 		return (
@@ -67,14 +67,14 @@ class Example extends Component {
 					onChange={ this.updateValue }
 					limit={ 10 }
 					classes={ {
-                    	root: 'autocomplete',
-                    	input: 'autocomplete-input',
-                    	listContainer: 'autocomplete-container',
-                    	listItems: 'autocomplete-items'
-               		} }
+                        root: 'autocomplete',
+                        input: 'autocomplete-input',
+                        listContainer: 'autocomplete-container',
+                        listItems: 'autocomplete-items'
+                    } }
 					styles={ {
 						...styles
-                	} }
+                    } }
 					inputProps={ {
 						name: 'url',
 						autoComplete: 'off'

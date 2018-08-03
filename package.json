@@ -17,7 +17,7 @@
     "url": "https://github.com/teamfa/react-autocompleter"
   },
   "peerDependencies": {
-    "react": "~0.14"
+    "react": "^16.4.1"
   },
   "devDependencies": {
     "babel": "^5.8.23",
@@ -28,16 +28,19 @@
     "eslint-config-airbnb": "^0.1.0",
     "eslint-plugin-react": "^3.6.3",
     "html-webpack-plugin": "^1.6.2",
-    "react-dom": "^0.14.2",
+    "prop-types": "^15.6.2",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
     "react-hot-loader": "^1.3.0",
+    "rimraf": "^2.6.2",
     "webpack": "^1.12.3",
     "webpack-dev-server": "^1.12.1"
   },
   "scripts": {
     "lint": "./node_modules/.bin/eslint ./src",
-    "prebuild": "rm -rf dist",
+    "prebuild": "rimraf dist",
     "build": "npm run lint && babel --stage 0 ./src --out-dir ./dist",
-    "prepublish": "npm run build",
+    "prepare": "npm run build",
     "example": "NODE_ENV=production webpack -p --config webpack.example.config.js",
     "playground": "webpack-dev-server --config ./playground/webpack.config.js --colors --inline --port 3000"
   },

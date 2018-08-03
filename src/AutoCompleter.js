@@ -1,6 +1,7 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import Input from './Input';
 import ListContainer from './ListContainer';
+import PropTypes from 'prop-types';
 
 class AutoCompleter extends Component {
 
