@@ -38,19 +38,15 @@ class AutoCompleter extends Component {
 	};
 
 	state = {
-		itemList: this.props.data,
 		filteredItemList: [],
 		inputValue: this.props.value,
 		navigate: 0
 	};
 
-	componentWillReceiveProps(nextProps) {
+	componentDidUpdate(prevProps) {
 		// update itemList if itemList prop changed, and clear the input field
-		if (nextProps.data !== this.props.data) {
-			this.setState({ 
-				itemList: nextProps.data,
-				inputValue: ''
-			});
+		if (this.props.data !== prevProps.data) {
+			this.filterItemList(this.state.inputValue);
 		}
   }
 
@@ -90,26 +86,31 @@ class AutoCompleter extends Component {
 
 	handleInputChange = (e) => {
 		this.onChange(e.target.value);
-		let updatedList = [];
 
 		this.setState({
 			inputValue: e.target.value,
 			navigate: 0
 		});
 
-		if (e.target.value.length) {
-			updatedList = this.state.itemList.filter(item => {
-				return e.target.value.length <= item.length && item.toLowerCase().search(e.target.value.toLowerCase()) !== -1;
-			});
-		}
+		this.filterItemList(e.target.value);
 
-		if (this.props.limit && updatedList.length > this.props.limit) {
-			updatedList = updatedList.slice(0, this.props.limit);
-		}
+	}
 
-		this.setState({
-			filteredItemList: updatedList
-		});
+	filterItemList = (s) => {
+        let updatedList = [];
+        if (s.length) {
+            updatedList = this.props.data.filter(item => {
+                return s.length <= item.length && item.toLowerCase().search(s.toLowerCase()) !== -1;
+            });
+        }
+
+        if (this.props.limit && updatedList.length > this.props.limit) {
+            updatedList = updatedList.slice(0, this.props.limit);
+        }
+
+        this.setState({
+            filteredItemList: updatedList
+        });
 	}
 
 	handleKeyEvent = (e) => {

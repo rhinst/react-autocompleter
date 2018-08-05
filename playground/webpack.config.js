@@ -18,11 +18,17 @@ module.exports = {
 
 	module: {
 		loaders: [
+            {
+                test: /\.(js)$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader?stage=0'
+            },
 			{
-				test: /\.(js)$/,
+				test: /\.(json)$/,
 				exclude: /node_modules/,
-				loader: 'babel-loader?stage=0'
+				loader: 'json-loader'
 			}
+
 		]
 	},
 
