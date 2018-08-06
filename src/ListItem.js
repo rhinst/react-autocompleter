@@ -25,7 +25,7 @@ class ListItem extends Component {
 		}
 
 		return (
-			<li ref='autocompleter-listItems' className={ classes } onMouseDown={ this.handleSelect } style={ styles }>
+			<li ref='autocompleter-listItems' className={ classes } onClick={ this.handleSelect } style={ styles }>
 				{ content }
 			</li>
 		);
