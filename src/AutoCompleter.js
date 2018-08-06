@@ -93,7 +93,6 @@ class AutoCompleter extends Component {
 		});
 
 		this.filterItemList(e.target.value);
-
 	}
 
 	filterItemList = (s) => {
