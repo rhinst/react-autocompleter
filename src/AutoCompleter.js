@@ -73,7 +73,7 @@ class AutoCompleter extends Component {
 	}
 
 	onFocus = () => {
-		this.filterItemList();
+        this.filterItemList(this.state.inputValue);
 		if (this.props.onFocus) {
 			this.props.onFocus();
 		}
