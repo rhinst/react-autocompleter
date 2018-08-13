@@ -63,10 +63,6 @@ class AutoCompleter extends Component {
 	}
 
 	onBlur = () => {
-		this.setState({
-			filteredItemList: []
-		});
-
 		if (this.props.onBlur) {
 			this.props.onBlur();
 		}
