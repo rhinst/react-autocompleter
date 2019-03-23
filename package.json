@@ -1,7 +1,7 @@
 {
   "name": "react-autocompleter",
   "author": "TeamFA",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "A simple, configurable, styleable ReactJS component which completes your phrase with keyboard navigation support.",
   "main": "./dist/AutoCompleter.js",
   "keywords": [
@@ -14,7 +14,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/teamfa/react-autocompleter"
+    "url": "https://github.com/rhinst/react-autocompleter"
   },
   "peerDependencies": {
     "react": "^16.4.1"
